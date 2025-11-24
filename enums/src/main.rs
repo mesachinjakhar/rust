@@ -21,6 +21,18 @@ impl Message {
         println!("Hello from enum fn");
     }
 }
+ #[derive(Debug)]
+enum UsState {
+    Alaska,
+    California,
+}
+
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter(UsState),
+}
 
 fn main() {
 
@@ -39,8 +51,27 @@ fn main() {
 
     let sum = x + y.unwrap_or(0);
 
+    // match enum
+
+    let coin = Coin::Quarter(UsState::Alaska);
+
+    println!("{}", value_in_coin(coin))
+
+
 }
 
 fn route(_ip: IpAddrKind) {
 
+}
+
+fn value_in_coin(coin: Coin) -> u8 {
+    match coin {
+        Coin::Penny => 1,
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter(state) => {
+            println!("state quarter from {:?}", state);
+            25
+        }
+    }
 }

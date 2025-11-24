@@ -1,24 +1,24 @@
-2025-11-24T16:46:17.924Z INFO  [rustowlc::core] start borrowck of DefId(0:3 ~ ownership[9b26]::main)
-2025-11-24T16:46:17.971Z INFO  [rustowlc::core::analyze] facts of DefId(0:3 ~ ownership[9b26]::main) prepared; start analyze of DefId(0:3 ~ ownership[9b26]::main)
-2025-11-24T16:46:17.974Z INFO  [rustowlc::core::analyze] start re-computing borrow check with dump: true
-2025-11-24T16:46:17.975Z INFO  [rustowlc::core] borrow checked: 1 / 4
-2025-11-24T16:46:17.975Z INFO  [rustowlc::core] start borrowck of DefId(0:4 ~ ownership[9b26]::takes_ownership)
-2025-11-24T16:46:17.976Z INFO  [rustowlc::core::analyze] facts of DefId(0:4 ~ ownership[9b26]::takes_ownership) prepared; start analyze of DefId(0:4 ~ ownership[9b26]::takes_ownership)
-2025-11-24T16:46:17.976Z INFO  [rustowlc::core] borrow checked: 2 / 4
-2025-11-24T16:46:17.977Z INFO  [rustowlc::core] start borrowck of DefId(0:5 ~ ownership[9b26]::takes_reference)
-2025-11-24T16:46:17.978Z INFO  [rustowlc::core::analyze] facts of DefId(0:5 ~ ownership[9b26]::takes_reference) prepared; start analyze of DefId(0:5 ~ ownership[9b26]::takes_reference)
-2025-11-24T16:46:17.978Z INFO  [rustowlc::core] borrow checked: 3 / 4
-2025-11-24T16:46:17.978Z INFO  [rustowlc::core] start borrowck of DefId(0:6 ~ ownership[9b26]::takes_mut_reference)
-2025-11-24T16:46:17.979Z INFO  [rustowlc::core::analyze] start re-computing borrow check with dump: true
-2025-11-24T16:46:17.980Z INFO  [rustowlc::core::analyze] facts of DefId(0:6 ~ ownership[9b26]::takes_mut_reference) prepared; start analyze of DefId(0:6 ~ ownership[9b26]::takes_mut_reference)
-2025-11-24T16:46:17.980Z INFO  [rustowlc::core] borrow checked: 4 / 4
-2025-11-24T16:46:17.981Z INFO  [rustowlc::core::analyze] start re-computing borrow check with dump: true
-2025-11-24T16:46:17.987Z INFO  [rustowlc::core::analyze] borrow check finished
-2025-11-24T16:46:17.987Z INFO  [rustowlc::core::analyze] start re-computing borrow check with dump: true
-2025-11-24T16:46:17.988Z INFO  [rustowlc::core::analyze] borrow check finished
-2025-11-24T16:46:17.990Z INFO  [rustowlc::core::analyze] borrow check finished
-2025-11-24T16:46:17.990Z INFO  [rustowlc::core::analyze] borrow check finished
-2025-11-24T16:46:18.082Z INFO  [rustowlc::core] analyzed one item of /Users/sachien/Desktop/rust/ownership/src/main.rs
-2025-11-24T16:46:18.084Z INFO  [rustowlc::core] analyzed one item of /Users/sachien/Desktop/rust/ownership/src/main.rs
-2025-11-24T16:46:18.086Z INFO  [rustowlc::core] analyzed one item of /Users/sachien/Desktop/rust/ownership/src/main.rs
-2025-11-24T16:46:18.090Z INFO  [rustowlc::core] analyzed one item of /Users/sachien/Desktop/rust/ownership/src/main.rs
+2025-11-24T17:00:25.416Z INFO  [rustowlc::core] start borrowck of DefId(0:3 ~ ownership[9b26]::main)
+2025-11-24T17:00:25.462Z INFO  [rustowlc::core::analyze] facts of DefId(0:3 ~ ownership[9b26]::main) prepared; start analyze of DefId(0:3 ~ ownership[9b26]::main)
+2025-11-24T17:00:25.463Z INFO  [rustowlc::core::analyze] start re-computing borrow check with dump: true
+2025-11-24T17:00:25.463Z INFO  [rustowlc::core] borrow checked: 1 / 4
+2025-11-24T17:00:25.463Z INFO  [rustowlc::core] start borrowck of DefId(0:4 ~ ownership[9b26]::takes_ownership)
+2025-11-24T17:00:25.465Z INFO  [rustowlc::core::analyze] facts of DefId(0:4 ~ ownership[9b26]::takes_ownership) prepared; start analyze of DefId(0:4 ~ ownership[9b26]::takes_ownership)
+2025-11-24T17:00:25.467Z INFO  [rustowlc::core::analyze] start re-computing borrow check with dump: true
+2025-11-24T17:00:25.467Z INFO  [rustowlc::core] borrow checked: 2 / 4
+2025-11-24T17:00:25.467Z INFO  [rustowlc::core] start borrowck of DefId(0:5 ~ ownership[9b26]::takes_reference)
+2025-11-24T17:00:25.468Z INFO  [rustowlc::core::analyze] facts of DefId(0:5 ~ ownership[9b26]::takes_reference) prepared; start analyze of DefId(0:5 ~ ownership[9b26]::takes_reference)
+2025-11-24T17:00:25.468Z INFO  [rustowlc::core::analyze] borrow check finished
+2025-11-24T17:00:25.469Z INFO  [rustowlc::core::analyze] borrow check finished
+2025-11-24T17:00:25.469Z INFO  [rustowlc::core] borrow checked: 3 / 4
+2025-11-24T17:00:25.469Z INFO  [rustowlc::core] start borrowck of DefId(0:6 ~ ownership[9b26]::takes_mut_reference)
+2025-11-24T17:00:25.470Z INFO  [rustowlc::core::analyze] start re-computing borrow check with dump: true
+2025-11-24T17:00:25.471Z INFO  [rustowlc::core::analyze] facts of DefId(0:6 ~ ownership[9b26]::takes_mut_reference) prepared; start analyze of DefId(0:6 ~ ownership[9b26]::takes_mut_reference)
+2025-11-24T17:00:25.471Z INFO  [rustowlc::core] borrow checked: 4 / 4
+2025-11-24T17:00:25.471Z INFO  [rustowlc::core::analyze] start re-computing borrow check with dump: true
+2025-11-24T17:00:25.471Z INFO  [rustowlc::core::analyze] borrow check finished
+2025-11-24T17:00:25.472Z INFO  [rustowlc::core::analyze] borrow check finished
+2025-11-24T17:00:25.568Z INFO  [rustowlc::core] analyzed one item of /Users/sachien/Desktop/rust/ownership/src/main.rs
+2025-11-24T17:00:25.572Z INFO  [rustowlc::core] analyzed one item of /Users/sachien/Desktop/rust/ownership/src/main.rs
+2025-11-24T17:00:25.574Z INFO  [rustowlc::core] analyzed one item of /Users/sachien/Desktop/rust/ownership/src/main.rs
+2025-11-24T17:00:25.575Z INFO  [rustowlc::core] analyzed one item of /Users/sachien/Desktop/rust/ownership/src/main.rs
