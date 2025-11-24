@@ -55,7 +55,16 @@ fn main() {
 
     let coin = Coin::Quarter(UsState::Alaska);
 
-    println!("{}", value_in_coin(coin))
+    println!("{}", value_in_coin(coin));
+
+    // if let syntax
+
+
+    let some_value = Some(9);
+
+    if let Some(9) = some_value {
+        println!("nine");
+    };
 
 
 }
