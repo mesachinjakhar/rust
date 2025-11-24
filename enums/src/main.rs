@@ -31,6 +31,14 @@ fn main() {
 
     let localhost = IpAddrKind::V4(127, 0, 0, 1);
 
+    // Option enum
+
+    let x = 5;
+    // let y: Option<i32> = Some(5);
+        let y: Option<i32> = None;
+
+    let sum = x + y.unwrap_or(0);
+
 }
 
 fn route(_ip: IpAddrKind) {
