@@ -91,6 +91,20 @@ impl ContactBook {
             .collect()
     }
 
+    fn list_contacts(&self) {
+        if self.contacts.is_empty() {
+            println!("No contacts yet. use add to create one");
+            return;
+        }
+
+        println!("total contacts {}", self.contacts.len());
+
+        for c in &self.contacts {
+            println!("{}", c.display());
+        }
+
+    }
+
 
 }
 
