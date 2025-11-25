@@ -60,7 +60,12 @@ fn main() {
     book.add_contact("Sachin".into(), "8398999896".into(), None);
     book.add_contact("Deepak".into(), "9518059064".into(), None);
 
-    for i in 0..book.contacts.len() {
-        println!("{}", book.contacts[i].display());
+    // for i in 0..book.contacts.len() {
+    //     println!("{}", book.contacts[i].display());
+    // }
+
+    // idiomatic rust 
+    for contact in &book.contacts {
+        println!("{}", contact.display());
     }
 }
