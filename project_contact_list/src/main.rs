@@ -72,6 +72,26 @@ impl ContactBook {
         false
 
     }
+
+
+    fn search_contacts(&self, query: &str) -> Vec<&Contact> {
+        let q = query.to_lowercase();
+
+         self.contacts
+            .iter()
+            .filter(|c| {
+                c.name.to_lowercase().contains(&q)
+                    || c.number.to_lowercase().contains(&q)
+                    || c
+                        .email
+                        .as_ref()
+                        .map(|e| e.to_lowercase().contains(&q))
+                        .unwrap_or(false)
+            })
+            .collect()
+    }
+
+
 }
 
 
