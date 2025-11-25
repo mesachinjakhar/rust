@@ -1,7 +1,7 @@
 use std::io::{self, Write};
 
 struct Contact {
-    id: u8,
+    id: u32,
     number: String,
     name: String,
     email: Option<String>
@@ -25,7 +25,7 @@ impl Contact {
 
 struct ContactBook {
     contacts : Vec<Contact>,
-    next_id: u8,
+    next_id: u32,
 }
 
 impl ContactBook {
@@ -43,6 +43,34 @@ impl ContactBook {
         self.next_id += 1;
         self.contacts.push(contact);
         println!("contact added.")
+    } 
+
+    fn remove_by_token(&mut self, token: &str) -> bool {
+
+        if let Ok(id) = token.trim().parse::<u32>()  {
+            if let Some(pos) = self.contacts.iter().position(|c| c.id == id) {
+                self.contacts.remove(pos);
+                println!("Removed contact with id {}", id);
+                return true;
+            } else {
+                println!("No contact found with id {}", id);
+                return false;
+            }
+        }
+
+        let token_l = token.to_lowercase();
+
+        if let Some(pos) = self.contacts.iter().position(|c| c.name.to_lowercase().contains(&token_l)) {
+
+            let removed = self.contacts.remove(pos);
+            println!("Removed contact: {}", removed.display());
+            return true;
+        }
+
+
+        println!("No contact found matching \"{}\"", token);
+        false
+
     }
 }
 
