@@ -13,5 +13,10 @@ fn main() {
     v3.push(8);
     v3.push(9);
 
+    match v3.get(2) {
+        Some(v) => println!("{}", v),
+        None => println!("there is no index"),
+    };
+
     println!("{:?}", v3);
 }
