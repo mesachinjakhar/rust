@@ -24,26 +24,43 @@ impl Contact {
 
 
 struct ContactBook {
-    contact : Vec<Contact>,
+    contacts : Vec<Contact>,
     next_id: u8,
 }
 
 impl ContactBook {
     fn new() -> Self {
-        Self { contact: Vec::new(), next_id: 1 }
+        Self { contacts: Vec::new(), next_id: 1 }
+    }
+
+    fn add_contact(&mut self, name: String, number: String, email: Option<String>) {
+        let contact = Contact {
+            id: self.next_id,
+            name,
+            number,
+            email
+        };
+        self.next_id += 1;
+        self.contacts.push(contact);
+        println!("contact added.")
     }
 }
 
 
 fn main() {
-    let contact_book = ContactBook::new();
+    let mut book = ContactBook::new();
 
-    let contact = Contact {
+    let _contact = Contact {
         id: 1,
         name: "Sachin".into(),
         number: "8398999896".into(),
         email: None,
         };
 
-        println!("{}", contact.display());
+    book.add_contact("Sachin".into(), "8398999896".into(), None);
+    book.add_contact("Deepak".into(), "9518059064".into(), None);
+
+    for i in 0..book.contacts.len() {
+        println!("{}", book.contacts[i].display());
+    }
 }
