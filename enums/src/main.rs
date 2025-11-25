@@ -34,6 +34,23 @@ enum Coin {
     Quarter(UsState),
 }
 
+#[derive(Debug)]
+enum TrafficLight {
+    Red,
+    Yellow,
+    Green,
+}
+
+impl TrafficLight {
+    fn next(&self) -> TrafficLight {
+        match self {
+            TrafficLight::Red => TrafficLight::Green,
+            TrafficLight::Green => TrafficLight::Yellow,
+            TrafficLight::Yellow => TrafficLight::Red
+        }
+    }
+}
+
 fn main() {
 
     let four = IpAddrKind::V4;
@@ -59,12 +76,20 @@ fn main() {
 
     // if let syntax
 
-
     let some_value = Some(9);
 
     if let Some(9) = some_value {
         println!("nine");
     };
+
+    let mut light = TrafficLight::Red;
+
+    for _ in 0..5 {
+        println!("current light : {:?}", light);
+        light = light.next();
+    }
+
+
 
 
 }
