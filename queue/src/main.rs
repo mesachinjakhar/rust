@@ -11,12 +11,12 @@ impl <T> CircularQueue<T> where T : Clone { // why clone , because we only accep
     pub fn with_capacity(capacity: usize) -> Self {
         Self {
             inner: VecDeque::with_capacity(capacity),
-            capacity;
+            capacity: capacity
         }
     }
 
     pub fn len(&self) -> usize{
-        &self.inner.len()
+        self.inner.len()
     }
 
     pub fn push (&mut self, item: T) {
@@ -24,7 +24,7 @@ impl <T> CircularQueue<T> where T : Clone { // why clone , because we only accep
             return;
         }
         if self.capacity == self.len() {
-            self.pop_back();
+            self.inner.pop_back();
         }
         self.inner.push_front(item);
     }
@@ -67,6 +67,7 @@ fn main() {
 
 
     // Circular queue implementation
+
 
 
 
