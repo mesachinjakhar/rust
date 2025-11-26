@@ -9,4 +9,9 @@ fn main() {
     queue.push_back(20);
     queue.push_back(30);
     println!("{:?}", queue);
+
+    // remove from front 
+    if let Some(front) = queue.pop_front() { // pop_front returns the Option Some with Remove item if avaible or None if nothing is at front of queue. 
+        println!("removed {}", front);
+    }
 }
