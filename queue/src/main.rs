@@ -14,4 +14,15 @@ fn main() {
     if let Some(front) = queue.pop_front() { // pop_front returns the Option Some with Remove item if avaible or None if nothing is at front of queue. 
         println!("removed {}", front);
     }
+
+    // peek front element 
+    if let Some(front) = queue.front() {
+        println!("front element is: {}", front);
+    }
+
+    // queue size 
+    println!("size of queue: {}", queue.len());
+
+    // check if empty
+    println!("is empty:  {}", queue.is_empty());
 }
