@@ -7,7 +7,7 @@ pub struct CircularQueue<T> {
     capacity: usize
 }
 
-impl <T> CircularQueue<T> where T : Clone {
+impl <T> CircularQueue<T> where T : Clone { // why clone , because we only accept data which implement the clone trait on it
     pub fn with_capacity(capacity: usize) -> Self {
         Self {
             inner: VecDeque::with_capacity(capacity),
