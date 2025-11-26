@@ -1,4 +1,43 @@
 use std::collections::VecDeque;
+use std::collections::vec_deque::Iter;
+use serde::Serialize;
+
+pub struct CircularQueue<T> {
+    inner: VecDeque<T>,
+    capacity: usize
+}
+
+impl <T> CircularQueue<T> where T : Clone {
+    pub fn with_capacity(capacity: usize) -> Self {
+        Self {
+            inner: VecDeque::with_capacity(capacity),
+            capacity;
+        }
+    }
+
+    pub fn len(&self) -> usize{
+        &self.inner.len()
+    }
+
+    pub fn push (&mut self, item: T) {
+        if self.capacity == 0 {
+            return;
+        }
+        if self.capacity == self.len() {
+            self.pop_back();
+        }
+        self.inner.push_front(item);
+    }
+
+    pub fn iter(&self) -> Iter<'_, T> {
+        self.inner.iter()
+    }
+
+    pub fn to_vec(&self) -> Vec<T> {
+        self.inner.iter().map(|x | x.clone()).collect()
+    }
+}
+
 
 fn main() {
     // init empty queue 
@@ -25,4 +64,11 @@ fn main() {
 
     // check if empty
     println!("is empty:  {}", queue.is_empty());
+
+
+    // Circular queue implementation
+
+
+
+
 }
