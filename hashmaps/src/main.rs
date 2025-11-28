@@ -96,7 +96,7 @@ fn main() -> io::Result<()> {
 
     // Code to take str as input and create hashmap of each word
     let mut input = String::new();
-    io::stdin().read_to_string(&mut input)?;
+    io::stdin().read_line(&mut input)?;
 
     let freq = word_freq_map(&input);
 
