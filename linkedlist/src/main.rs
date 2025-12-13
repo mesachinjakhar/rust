@@ -1,4 +1,5 @@
 use std::rc::Rc;
+use std::cell::RefCell;
 
 pub struct Node {
     val: i32,
@@ -31,7 +32,11 @@ fn main() {
 
     println!("count {}", Rc::strong_count(&a)); // 2 , multiple ownership allowed
 
+    // refcell , muttable borrows at runtime
 
+    let x = RefCell::new(10);
+    *x.borrow_mut() = 20;
+    println!("{:?}", x);
 }
 
 
