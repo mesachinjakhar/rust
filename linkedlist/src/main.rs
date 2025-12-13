@@ -1,3 +1,5 @@
+use std::rc::Rc;
+
 pub struct Node {
     val: i32,
     next: Option<Box<Node>>
@@ -13,16 +15,23 @@ impl Node {
 }
 
 fn main() {
-    let mut third = Node::new(20);
+    // let mut third = Node::new(20);
 
-    let mut second = Node::new(10);
-    second.next = Some(Box::new(third));
+    // let mut second = Node::new(10);
+    // second.next = Some(Box::new(third));
 
-    let mut first = Node::new(5); 
-    first.next = Some(Box::new(second));
+    // let mut first = Node::new(5); 
+    // first.next = Some(Box::new(second));
 
-    let head = Some(Box::new(first));
-    print_list(&head);
+    // let head = Some(Box::new(first));
+    // print_list(&head);
+
+    let a = Rc::new(10);
+    let b = Rc::clone(&a);
+
+    println!("count {}", Rc::strong_count(&a)); // 2 , multiple ownership allowed
+
+
 }
 
 
