@@ -1,5 +1,40 @@
-use std::rc::Rc;
+use std::rc::{Rc, Weak};
 use std::cell::RefCell;
+
+
+// Doubly linked list 
+pub struct DNode {
+    val: i32,
+    next: Option<Rc<RefCell<DNode>>>,
+    prev: Option<Weak<RefCell<DNode>>>
+}
+
+impl DNode {
+    pub fn new(val: i32) -> Rc<RefCell<DNode>> {
+        Rc::new(RefCell::new(DNode { val: val, 
+            next: None, 
+            prev: None }))
+    }
+
+    pub fn push_front(head: &mut Option<Rc<RefCell<DNode>>>, val: i32) {
+        let new_node = Self::new(val);
+
+        match head.take() {
+            Some(old_head) => {
+                old_head.borrow_mut().prev = Some(Rc::downgrade(&new_node));
+                new_node.borrow_mut().next = Some(old_head);
+                *head = Some(new_node);
+            }
+            None => {
+                *head = Some(new_node)
+            }
+        }
+    }
+}
+
+
+
+
 
 pub struct Node {
     val: i32,
