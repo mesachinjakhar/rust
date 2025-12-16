@@ -52,6 +52,12 @@ impl Node {
 }
 
 fn main() {
+    let mut a = String::from("hello");
+
+    let b = &mut a; 
+
+    // let c = *b; // moving it would leave "a" uninitialized.
+    println!("{}", a); 
     let mut third = Node::new(20);
 
     let mut second = Node::new(10);
