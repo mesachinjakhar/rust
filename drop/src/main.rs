@@ -23,7 +23,7 @@ fn main() {
         data: String::from("some data"),
     };
     println!("CustomSmartPointer created");
-    c.drop();
+    drop(c);
     println!("CustomSmartPointer dropped before the end of main");
 
 }
