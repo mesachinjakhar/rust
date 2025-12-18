@@ -30,7 +30,7 @@ impl List {
             None => None,
             Some(node) => {
                 self.head = node.next;
-                Some(node.elem);
+                Some(node.elem)
             }
         }
     }
