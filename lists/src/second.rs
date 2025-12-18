@@ -1,37 +1,34 @@
 use std::mem;
 
-pub struct  List {
-    head: Link,
+pub struct List<T> {
+    head: Link<T>,
 }
 
-type Link = Option<Box<Node>>;
+type Link<T> = Option<Box<Node<T>>>;
 
-struct Node {
-    elem: i32,
-    next: Link,
+struct Node<T> {
+    elem: T,
+    next: Link<T>,
 }
 
-impl List {
+impl<T> List<T> {
     pub fn new() -> Self {
         List {head: None}
     }
 
-    pub fn push(&mut self, elem: i32) {
+    pub fn push(&mut self, elem: T) {
         let new_node = Box::new(Node {
             elem: elem,
-            next: mem::replace(&mut self.head, None)
+            next: self.head.take()
         });
 
         self.head = Some(new_node)
     } 
 
-    pub fn pop(&mut self) -> Option<i32> {
-        match self.head.take() {
-            None => None,
-            Some(node) => {
-                self.head = node.next;
-                Some(node.elem)
-            }
-        }
+    pub fn pop(&mut self) -> Option<T> {
+        self.head.take().map(|node| {
+            self.head = node.next;
+            node.elem
+        })
     }
 }
