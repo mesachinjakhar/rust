@@ -8,14 +8,25 @@ fn main() {
     let (tx, rx) = mpsc::channel();
 
     thread::spawn(move || {
-        let val = String::from("hi");
-        thread::sleep(Duration::from_millis(2000));
-        tx.send(val).unwrap();
+        // let val = String::from("hi");
+        // thread::sleep(Duration::from_millis(2000));
+        // tx.send(val).unwrap();
         // println!("val is {val}"); this will cause error 
+
+        let vals = vec![String::from("hi"), String::from("from"), String::from("the"), String::from("thread")];
+
+        for val in vals {
+            tx.send(val).unwrap();
+            thread::sleep(Duration::from_secs(1));
+        }
     });
 
-    let recieved = rx.recv().unwrap(); // block the thread until value recieved
-    println!("got: {recieved}");
+    for received in rx {
+        println!("got: {received}");
+    }
+
+    // let recieved = rx.recv().unwrap(); // block the thread until value recieved
+    // println!("got: {recieved}");
 
     // let v = vec![1,2,3];
 
