@@ -25,6 +25,8 @@ fn main() {
         println!("got: {received}");
     }
 
+    println!("hiiiii");
+
     // let recieved = rx.recv().unwrap(); // block the thread until value recieved
     // println!("got: {recieved}");
 
