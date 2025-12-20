@@ -7,6 +7,8 @@ fn main() {
 
     let (tx, rx) = mpsc::channel();
 
+    let tx1 = tx.clone();
+
     thread::spawn(move || {
         // let val = String::from("hi");
         // thread::sleep(Duration::from_millis(2000));
@@ -16,10 +18,25 @@ fn main() {
         let vals = vec![String::from("hi"), String::from("from"), String::from("the"), String::from("thread")];
 
         for val in vals {
+            tx1.send(val).unwrap();
+            thread::sleep(Duration::from_secs(1));
+        }
+    });
+
+     thread::spawn(move || {
+        // let val = String::from("hi");
+        // thread::sleep(Duration::from_millis(2000));
+        // tx.send(val).unwrap();
+        // println!("val is {val}"); this will cause error 
+
+        let vals = vec![String::from("more"), String::from("messages"), String::from("for"), String::from("you")];
+
+        for val in vals {
             tx.send(val).unwrap();
             thread::sleep(Duration::from_secs(1));
         }
     });
+
 
     for received in rx { // blocks main thread untill channel closed
         println!("got: {received}");
