@@ -11,6 +11,7 @@ fn main() {
         let val = String::from("hi");
         thread::sleep(Duration::from_millis(2000));
         tx.send(val).unwrap();
+        // println!("val is {val}"); this will cause error 
     });
 
     let recieved = rx.recv().unwrap(); // block the thread until value recieved
