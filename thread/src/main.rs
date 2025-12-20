@@ -21,11 +21,10 @@ fn main() {
         }
     });
 
-    for received in rx {
+    for received in rx { // blocks main thread untill channel closed
         println!("got: {received}");
     }
 
-    println!("hiiiii");
 
     // let recieved = rx.recv().unwrap(); // block the thread until value recieved
     // println!("got: {recieved}");
