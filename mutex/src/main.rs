@@ -14,7 +14,6 @@ fn main() {
 
             *num += 1;
         });
-
         handles.push(handle);
     };
 
