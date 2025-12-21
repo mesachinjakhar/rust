@@ -1,22 +1,34 @@
-use trpl::Html; 
+use trpl::{Html, Either}; 
 
-async fn page_title(url: &str) -> Option<String> {
+async fn page_title(url: &str) -> (&str, Option<String>) {
     let response = trpl::get(url).await; 
     let response_text = response.text().await; 
 
-    Html::parse(&response_text)
+    let title = Html::parse(&response_text)
     .select_first("title")
-    .map(|title| title.inner_html())
+    .map(|title| title.inner_html());
+    (url, title)
 }
 
 fn main() {
     let args: Vec<String> = std::env::args().collect();
-   trpl::block_on(async {
-        let url = &args[1];
-        match page_title(url).await {
-            Some(title) => println!("The title for {url} was {title}"),
-            None => println!("{url} had no title"),
+    trpl::block_on(async {
+        let title_fut_1 = page_title(&args[1]);
+        let title_fut_2 = page_title(&args[2]);
+
+
+        let (url, maybe_title) = 
+        match trpl::select(title_fut_1, title_fut_2).await {
+            Either::Left(left) => left,
+            Either::Right(right) => right,
+        };
+
+        println!("{url} returned first");
+        match maybe_title {
+            Some(title) => println!("its page title was: {title}"),
+            None => println!("it had no title"),
         }
+
     })
 
 }
