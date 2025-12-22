@@ -1,4 +1,4 @@
-use trpl::{Html, Either}; 
+use trpl::{Either, Html, join}; 
 use std::time::Duration;
 
 async fn page_title(url: &str) -> (&str, Option<String>) {
@@ -13,14 +13,54 @@ async fn page_title(url: &str) -> (&str, Option<String>) {
 
 fn main() {
 
+
+    // trpl::block_on(async {
+
+    //     let a = async {
+    //         println!("A1");
+    //         trpl::sleep(Duration::from_secs(1)).await;
+    //         println!("A2");
+    //     };
+
+    //     let b = async {
+    //         println!("B1");
+    //         println!("B2");
+    //     };
+
+    //     join(a, b).await
+
+
+    // });
+
+
+
     trpl::block_on(async {
 
     let (tx, mut rx) = trpl::channel();
-    let val = String::from("hi");
-    tx.send(val).unwrap();
 
-    let recieved = rx.recv().await.unwrap();
-    println!("recieved {recieved}")
+    let tx_fut = async move {
+            let vals = vec![
+            String::from("hi"),
+            String::from("from"),
+            String::from("the"),
+            String::from("future"),
+        ];
+
+    for val in vals {
+            tx.send(val).unwrap();
+            trpl::sleep(Duration::from_millis(500)).await;
+        }
+    };
+
+    let rx_fut = async {
+         while let Some(value) = rx.recv().await {
+            println!("received '{value}'");
+        }
+
+
+    };
+
+    trpl::join(tx_fut, rx_fut).await;
 
     })
 
