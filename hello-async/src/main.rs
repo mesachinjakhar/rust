@@ -1,5 +1,5 @@
 use trpl::{Either, Html, join}; 
-use std::time::Duration;
+use std::{thread, time::Duration};
 
 async fn page_title(url: &str) -> (&str, Option<String>) {
     let response = trpl::get(url).await; 
@@ -9,6 +9,11 @@ async fn page_title(url: &str) -> (&str, Option<String>) {
     .select_first("title")
     .map(|title| title.inner_html());
     (url, title)
+}
+
+fn slow(name: &str, ms: u64) {
+    thread::sleep(Duration::from_millis(ms));
+    println!("{name} ran for {ms}ms ")
 }
 
 fn main() {
@@ -38,7 +43,9 @@ fn main() {
 
     let (tx, mut rx) = trpl::channel();
 
-    let tx_fut = async move {
+    let tx1 = tx.clone();
+
+    let tx1_fut = async move {
             let vals = vec![
             String::from("hi"),
             String::from("from"),
@@ -47,7 +54,7 @@ fn main() {
         ];
 
     for val in vals {
-            tx.send(val).unwrap();
+            tx1.send(val).unwrap();
             trpl::sleep(Duration::from_millis(500)).await;
         }
     };
@@ -60,7 +67,22 @@ fn main() {
 
     };
 
-    trpl::join(tx_fut, rx_fut).await;
+    let tx_fut = async move {
+            let vals = vec![
+                String::from("more"),
+                String::from("messages"),
+                String::from("for"),
+                String::from("you"),
+            ];
+
+            for val in vals {
+                tx.send(val).unwrap();
+                trpl::sleep(Duration::from_millis(1500)).await;
+            }
+        };
+
+
+    trpl::join!(tx_fut, tx1_fut, rx_fut);
 
     })
 
