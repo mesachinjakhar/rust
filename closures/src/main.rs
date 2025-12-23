@@ -90,6 +90,15 @@ fn main() {
     let mut only_borrows = || list.push(4);
 
     only_borrows();
-    println!("After calling closure: {list:?}")
+    println!("After calling closure: {list:?}");
+
+
+    let list = vec![1, 2, 3];
+    println!("Before defining closure: {list:?}");
+
+    thread::spawn(move || println!("From thread: {list:?}"))
+        .join()
+        .unwrap();
+
 
 }
