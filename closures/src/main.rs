@@ -1,3 +1,6 @@
+use std::thread;
+use std::time::Duration;
+
 #[derive(Debug, Clone, Copy)]
 enum ShirtColor {
     Red,
@@ -54,6 +57,13 @@ fn main() {
         "The user with preference {:?} gets {:?}",
         user_pref2, giveaway2
     );
+
+
+    let expensive_closure = |num: u32| -> u32 {
+        println!("calcuklating slowly");
+        thread::sleep(Duration::from_secs(1));
+        num
+    };
 
 
 }
