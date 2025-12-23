@@ -59,32 +59,37 @@ fn main() {
     );
 
 
-    let expensive_closure = |num: u32| -> u32 {
-        println!("calcuklating slowly");
-        thread::sleep(Duration::from_secs(1));
-        num
-    };
+    // let expensive_closure = |num: u32| -> u32 {
+    //     println!("calcuklating slowly");
+    //     thread::sleep(Duration::from_secs(1));
+    //     num
+    // };
 
     // let add_one_v3 = |x|             { x + 1 };
     // let add_one_v4 = |x|               x + 1  ;
 
-    let example_closure = |x| x;
-    let s = example_closure(String::from("hello"));
+    // let example_closure = |x| x;
+    // let s = example_closure(String::from("hello"));
     // let n = example_closure(5);
 
 
     // immutable reference 
-    let list = vec![1, 2, 3];
+    // let list = vec![1, 2, 3];
+    // println!("Before defining closure: {list:?}");
+
+    // let only_borrows = || println!("From closure: {list:?}");
+
+    // println!("Before calling closure: {list:?}");
+    // only_borrows();
+    // println!("After calling closure: {list:?}");
+
+    // mutable reference 
+    let mut list = vec![1, 2, 3];
     println!("Before defining closure: {list:?}");
 
-    let only_borrows = || println!("From closure: {list:?}");
+    let mut only_borrows = || list.push(4);
 
-    println!("Before calling closure: {list:?}");
     only_borrows();
-    println!("After calling closure: {list:?}");
-
-
-
-
+    println!("After calling closure: {list:?}")
 
 }
