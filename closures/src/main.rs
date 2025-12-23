@@ -65,5 +65,14 @@ fn main() {
         num
     };
 
+    // let add_one_v3 = |x|             { x + 1 };
+    // let add_one_v4 = |x|               x + 1  ;
+
+    let example_closure = |x| x;
+    let s = example_closure(String::from("hello"));
+    let n = example_closure(5);
+
+
+
 
 }
