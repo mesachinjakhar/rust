@@ -49,6 +49,13 @@ fn main() {
         }
     };
 
+    let v = vec![1, 2, 3];
+
+    v[99];
+
+
+
+
     // unwrap 
     // let f2 = File::open("hello2.txt").unwrap();
     // unwrap will panic if .open method return error
