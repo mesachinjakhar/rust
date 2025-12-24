@@ -82,5 +82,15 @@ fn main() {
         }
     }
 
+    // match guard
+    let x = Some(5);
+
+
+    match x {
+        Some(x) if x %2 == 0 => println!("the number {x} is even"),
+        Some(x) => println!("The number {x} is odd"),
+        None => (),
+    }
+
 
 }
